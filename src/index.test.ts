@@ -1,6 +1,6 @@
 import "mocha"
 import assert from "assert"
-import { greet, isOld } from "./index"
+import { greet, isOld, countOdd } from "./index"
 
 describe("ts test", () => {
   it("get greeting", () => {
@@ -24,3 +24,37 @@ describe("ts test", () => {
     assert.strictEqual(is36Old, true)
   })
 })
+
+it("fun with variables", () => {
+  // act
+  let name: string = "Love";
+  let nameImplicit = "Love";
+  let nameImplicit2 = name;
+
+  const cool: boolean = true;
+  const birthYear = 1979;
+
+  // arrange
+  assert.strictEqual(typeof cool, "boolean");
+  assert.strictEqual(typeof birthYear, "number");
+  assert.strictEqual(typeof name, "string");
+  assert.strictEqual(typeof nameImplicit, "string");
+  assert.strictEqual(typeof nameImplicit2, "string");
+});
+
+it("arrays are typed in ts", () => {
+  const names: string[] = ["Marcus", "Julia", "Catherine"];
+  const firstFive = [1, 2, 3, 4, 5];
+  // const crazy = [true, "Hej", 23.5]
+});
+
+it("count odd numbers", () => {
+  // arrange
+  const firstFive = [1, 2, 3, 4, 5];
+
+  // act
+  const numberOfOdds = countOdd(firstFive);
+
+  // arrange
+  assert.strictEqual(numberOfOdds, 3);
+});
