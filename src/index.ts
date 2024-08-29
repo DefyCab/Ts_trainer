@@ -27,4 +27,23 @@ function divisibleByThree(array: number[]): number {
 function isOld(age: number): boolean {
   return age >= 35
 }
-export { greet, isOld, countOdd, divisibleByThree }
+
+// function sumEven(array: number[]): number {
+//   const evenNumbers = array.filter((number) => number % 2 === 0)
+//   let sum = 0
+//   for (let i = 0; i < evenNumbers.length; i++) {
+//     sum += evenNumbers[i]
+//   }
+//   return sum
+// }
+
+function sumEven(array: number[]): number{
+  const evenNumbers = array.filter((number) => number % 2 === 0)
+  const total = evenNumbers.reduce((sum, number) => {
+    return sum + number
+  }, 0)
+return total
+}
+
+
+export { greet, isOld, countOdd, divisibleByThree, sumEven }

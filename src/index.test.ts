@@ -1,6 +1,6 @@
 import "mocha"
 import assert from "assert"
-import { greet, isOld, countOdd, divisibleByThree } from "./index"
+import { greet, isOld, countOdd, divisibleByThree, sumEven } from "./index"
 
 describe("ts test", () => {
   it("get greeting", () => {
@@ -68,4 +68,15 @@ it("count divisible by three numbers", () => {
 
   // arrange
   assert.strictEqual(numberOfThrees, 3);
+});
+
+it("sum even numbers", () => {
+  // arrange
+  const nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+  // act
+  const sum = sumEven(nums);
+
+  // arrange
+  assert.strictEqual(sum, 30);
 });
