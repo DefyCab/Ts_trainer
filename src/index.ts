@@ -3,4 +3,15 @@ function greet(name: string, birthYear: number): string {
   return `Hello ${name}, you are ${age} years old`
 }
 
-export { greet }
+// function isOld(age: number): boolean {
+//   if (age >= 35) {
+//     return true
+//   }
+//   return false
+// }
+// export { greet, isOld }
+
+function isOld(age: number): boolean {
+  return age >= 35
+}
+export { greet, isOld }
