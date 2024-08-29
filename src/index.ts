@@ -15,11 +15,16 @@ function greet(name: string, birthYear: number): string {
 
 // filter throug each instance of the array checking if it's divisible by 2.
 // Returing all values the rest not equal zero i.e odd nubmer.
+// if you remove :number number will change to any in filter function.
 function countOdd(array: number[]): number {
   return array.filter((number) => number % 2 !== 0).length
+}
+
+function divisibleByThree(array: number[]): number {
+  return array.filter((number) => number % 3 === 0).length
 }
 
 function isOld(age: number): boolean {
   return age >= 35
 }
-export { greet, isOld, countOdd }
+export { greet, isOld, countOdd, divisibleByThree }

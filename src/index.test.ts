@@ -1,6 +1,6 @@
 import "mocha"
 import assert from "assert"
-import { greet, isOld, countOdd } from "./index"
+import { greet, isOld, countOdd, divisibleByThree } from "./index"
 
 describe("ts test", () => {
   it("get greeting", () => {
@@ -57,4 +57,15 @@ it("count odd numbers", () => {
 
   // arrange
   assert.strictEqual(numberOfOdds, 3);
+});
+
+it("count divisible by three numbers", () => {
+  // arrange
+  const firstNine = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+  // act
+  const numberOfThrees = divisibleByThree(firstNine);
+
+  // arrange
+  assert.strictEqual(numberOfThrees, 3);
 });
