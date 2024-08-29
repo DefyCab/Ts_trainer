@@ -37,13 +37,37 @@ function isOld(age: number): boolean {
 //   return sum
 // }
 
-function sumEven(array: number[]): number{
-  const evenNumbers = array.filter((number) => number % 2 === 0)
-  const total = evenNumbers.reduce((sum, number) => {
-    return sum + number
-  }, 0)
-return total
+// function sumEven(array: number[]): number{
+//   const evenNumbers = array.filter((number) => number % 2 === 0)
+//   const total = evenNumbers.reduce((sum, number) => {
+//     return sum + number
+//   }, 0)
+// return total
+// }
+
+type Address = {
+  street: string;
+  streetNo: number;
+  city: string;
+};
+
+type Person = {
+  name: string;
+  birthYear: number;
+  address: Address;
+};
+
+function sumEven(array: number[]): number {
+  return array
+    .filter((num) => num % 2 === 0)
+    .reduce((sum, currentValue) => sum + currentValue, 0)
 }
 
+const getPersonStreetNo = (p: Person) :number => p.address.streetNo
 
-export { greet, isOld, countOdd, divisibleByThree, sumEven }
+// function getPersonStreetNo(p: Person): number {
+//   return p.address.streetNo;
+// }
+
+export { greet, isOld, countOdd, divisibleByThree, sumEven, Person,  getPersonStreetNo }
+
