@@ -69,13 +69,17 @@ const getPersonStreetNo = (p: Person) => p.address.streetNo
 //   return p.address.streetNo;
 // }
 
-class PersonClass {
+class PersonC{
   name: string = "";
 
   birthYear: number = 0;
+  constructor(name: string, birthYear: number) {
+    this.name = name;
+    this.birthYear = birthYear;
+  }
 }
 
-const p = new PersonClass();
+const p = new PersonC("Love", 1979);
 
 console.log(p)
 
