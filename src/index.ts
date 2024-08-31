@@ -1,3 +1,5 @@
+import { getSystemErrorName } from "util"
+
 function greet(name: string, birthYear: number): string {
   const age = new Date().getFullYear() - birthYear
   return `Hello ${name}, you are ${age} years old`
@@ -77,11 +79,23 @@ class PersonC{
     this.name = name;
     this.birthYear = birthYear;
   }
+
+  getName() {
+    return this.name
+  }
 }
 
-const p = new PersonC("Love", 1979);
+class EmployeeC extends PersonC {
+  employeeId: number = -1;
+}
 
-console.log(p)
+// const e = new EmployeeC("Marcus Employee", 1972);
+// console.log(e.getName());
+// console.log(e.employeeId);
 
-export { greet, isOld, countOdd, divisibleByThree, sumEven, Person,  getPersonStreetNo }
+// const p = new PersonC("Love", 1979);
+
+// console.log(p.getName())
+
+export { greet, isOld, countOdd, divisibleByThree, sumEven, Person,  getPersonStreetNo, PersonC, EmployeeC  }
 

@@ -7,7 +7,9 @@ import {
   divisibleByThree,
   sumEven,
   Person,
-  getPersonStreetNo
+  getPersonStreetNo,
+  PersonC,
+  EmployeeC,
 } from "./index"
 
 describe("ts test", () => {
@@ -104,3 +106,18 @@ it("gets the street number for a person", () => {
 
   assert.strictEqual(streetNo, 23)
 })
+
+it("using classes", () => {
+  // arrange
+  const p = new PersonC("Marcus", 1972);
+  const e = new EmployeeC("Marcus Employee", 1972);
+
+  // act
+  e.employeeId = 12345;
+
+  // assert
+  assert.strictEqual(p.name, "Marcus"); // breaks with Property 'name' is private and only accessible within class 'PersonClass'
+  assert.strictEqual(p.getName(), "Marcus");
+  assert.strictEqual(e.getName(), "Marcus Employee");
+  assert.strictEqual(e.employeeId, 12345);
+});
