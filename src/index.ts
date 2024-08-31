@@ -63,11 +63,21 @@ function sumEven(array: number[]): number {
     .reduce((sum, currentValue) => sum + currentValue, 0)
 }
 
-const getPersonStreetNo = (p: Person) :number => p.address.streetNo
+const getPersonStreetNo = (p: Person) => p.address.streetNo
 
 // function getPersonStreetNo(p: Person): number {
 //   return p.address.streetNo;
 // }
+
+class PersonClass {
+  name: string = "";
+
+  birthYear: number = 0;
+}
+
+const p = new PersonClass();
+
+console.log(p)
 
 export { greet, isOld, countOdd, divisibleByThree, sumEven, Person,  getPersonStreetNo }
 
