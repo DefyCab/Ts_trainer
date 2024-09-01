@@ -12,7 +12,8 @@ import {
   EmployeeC,
   IPerson,
   getPersonNameString,
-  printThis
+  printThis, 
+  Union
 } from "./index"
 
 describe("ts test", () => {
@@ -147,4 +148,14 @@ it("uses union types to allow null", () => {
   // assert
   assert.strictEqual(result1, "no person supplied");
   assert.strictEqual(result2, "no person supplied");
+});
+
+it("uses union type as string or number", () => {
+
+  const num: Union = 23
+  const num2: Union = "Love" 
+
+   // assert
+  assert.strictEqual(num, 23);
+  assert.strictEqual(num2, "Love");
 });
