@@ -10,6 +10,9 @@ import {
   getPersonStreetNo,
   PersonC,
   EmployeeC,
+  IPerson,
+  getPersonNameString,
+  printThis
 } from "./index"
 
 describe("ts test", () => {
@@ -120,4 +123,28 @@ it("using classes", () => {
   assert.strictEqual(p.getName(), "Marcus");
   assert.strictEqual(e.getName(), "Marcus Employee");
   assert.strictEqual(e.employeeId, 12345);
+});
+
+it("prints an IPerson", () => {
+  // arrange
+  const p1: IPerson = { name: "Marcus", birthYear: 1972 };
+  const p2 = { name: "David", birthYear: 1975, drummer: true };
+
+  // act
+  const p1Address = getPersonNameString(p1);
+  const p2Address = getPersonNameString(p2);
+
+  // assert
+  assert.strictEqual(p1Address, "Marcus, 1972");
+  assert.strictEqual(p2Address, "David, 1975");
+});
+
+it("uses union types to allow null", () => {
+  // act
+  const result1 = printThis(undefined);
+  const result2 = printThis(null);
+
+  // assert
+  assert.strictEqual(result1, "no person supplied");
+  assert.strictEqual(result2, "no person supplied");
 });

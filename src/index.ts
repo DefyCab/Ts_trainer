@@ -48,16 +48,16 @@ function isOld(age: number): boolean {
 // }
 
 type Address = {
-  street: string;
-  streetNo: number;
-  city: string;
-};
+  street: string
+  streetNo: number
+  city: string
+}
 
 type Person = {
-  name: string;
-  birthYear: number;
-  address: Address;
-};
+  name: string
+  birthYear: number
+  address: Address
+}
 
 function sumEven(array: number[]): number {
   return array
@@ -71,13 +71,13 @@ const getPersonStreetNo = (p: Person) => p.address.streetNo
 //   return p.address.streetNo;
 // }
 
-class PersonC{
-  name: string = "";
+class PersonC {
+  name: string = ""
 
-  birthYear: number = 0;
+  birthYear: number = 0
   constructor(name: string, birthYear: number) {
-    this.name = name;
-    this.birthYear = birthYear;
+    this.name = name
+    this.birthYear = birthYear
   }
 
   getName() {
@@ -86,16 +86,36 @@ class PersonC{
 }
 
 class EmployeeC extends PersonC {
-  employeeId: number = -1;
+  employeeId: number = -1
 }
 
-// const e = new EmployeeC("Marcus Employee", 1972);
-// console.log(e.getName());
-// console.log(e.employeeId);
+interface IPerson {
+  name: string
+  birthYear: number
+}
 
-// const p = new PersonC("Love", 1979);
+function getPersonNameString(n: IPerson): string {
+  return `${n.name}, ${n.birthYear}`
+}
 
-// console.log(p.getName())
+function printThis(p: Person) {
+  if (!p) {
+    return "no person supplied"
+  }
+  return p.name
+}
 
-export { greet, isOld, countOdd, divisibleByThree, sumEven, Person,  getPersonStreetNo, PersonC, EmployeeC  }
-
+export {
+  greet,
+  isOld,
+  countOdd,
+  divisibleByThree,
+  sumEven,
+  Person,
+  getPersonStreetNo,
+  PersonC,
+  EmployeeC,
+  IPerson,
+  getPersonNameString,
+  printThis,
+}
