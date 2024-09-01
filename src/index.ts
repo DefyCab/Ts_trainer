@@ -22,9 +22,11 @@ function countOdd(array: number[]): number {
   return array.filter((number) => number % 2 !== 0).length
 }
 
-function divisibleByThree(array: number[]): number {
-  return array.filter((number) => number % 3 === 0).length
-}
+// function divisibleByThree(array: number[]): number {
+//   return array.filter((number) => number % 3 === 0).length
+// }
+
+const divisibleByThree = (array: number[]): number => array.filter((number) => number % 3 === 0).length
 
 function isOld(age: number): boolean {
   return age >= 35
