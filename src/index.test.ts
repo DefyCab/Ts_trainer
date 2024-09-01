@@ -7,13 +7,15 @@ import {
   divisibleByThree,
   sumEven,
   Person,
+  Address,
   getPersonStreetNo,
   PersonC,
   EmployeeC,
   IPerson,
   getPersonNameString,
-  printThis, 
-  Union
+  printThis,
+  Union,
+  addToStart,
 } from "./index"
 
 describe("ts test", () => {
@@ -113,49 +115,72 @@ it("gets the street number for a person", () => {
 
 it("using classes", () => {
   // arrange
-  const p = new PersonC("Marcus", 1972);
-  const e = new EmployeeC("Marcus Employee", 1972);
+  const p = new PersonC("Marcus", 1972)
+  const e = new EmployeeC("Marcus Employee", 1972)
 
   // act
-  e.employeeId = 12345;
+  e.employeeId = 12345
 
   // assert
-  assert.strictEqual(p.name, "Marcus"); // breaks with Property 'name' is private and only accessible within class 'PersonClass'
-  assert.strictEqual(p.getName(), "Marcus");
-  assert.strictEqual(e.getName(), "Marcus Employee");
-  assert.strictEqual(e.employeeId, 12345);
-});
+  assert.strictEqual(p.name, "Marcus") // breaks with Property 'name' is private and only accessible within class 'PersonClass'
+  assert.strictEqual(p.getName(), "Marcus")
+  assert.strictEqual(e.getName(), "Marcus Employee")
+  assert.strictEqual(e.employeeId, 12345)
+})
 
 it("prints an IPerson", () => {
   // arrange
-  const p1: IPerson = { name: "Marcus", birthYear: 1972 };
-  const p2 = { name: "David", birthYear: 1975, drummer: true };
+  const p1: IPerson = { name: "Marcus", birthYear: 1972 }
+  const p2 = { name: "David", birthYear: 1975, drummer: true }
 
   // act
-  const p1Address = getPersonNameString(p1);
-  const p2Address = getPersonNameString(p2);
+  const p1Address = getPersonNameString(p1)
+  const p2Address = getPersonNameString(p2)
 
   // assert
-  assert.strictEqual(p1Address, "Marcus, 1972");
-  assert.strictEqual(p2Address, "David, 1975");
-});
+  assert.strictEqual(p1Address, "Marcus, 1972")
+  assert.strictEqual(p2Address, "David, 1975")
+})
 
 it("uses union types to allow null", () => {
   // act
-  const result1 = printThis(undefined);
-  const result2 = printThis(null);
+  const result1 = printThis(undefined)
+  const result2 = printThis(null)
 
   // assert
-  assert.strictEqual(result1, "no person supplied");
-  assert.strictEqual(result2, "no person supplied");
-});
+  assert.strictEqual(result1, "no person supplied")
+  assert.strictEqual(result2, "no person supplied")
+})
 
 it("uses union type as string or number", () => {
-
   const num: Union = 23
-  const num2: Union = "Love" 
+  const num2: Union = "Love"
 
-   // assert
-  assert.strictEqual(num, 23);
-  assert.strictEqual(num2, "Love");
-});
+  // assert
+  assert.strictEqual(num, 23)
+  assert.strictEqual(num2, "Love")
+})
+
+it("add to list", () => {
+  // arrange
+  const listOfPeople: IPerson[] = [{ name: "Marcus", birthYear: 1972 }]
+  const listOfAddresses: Address[] = [
+    { street: "Strålgatan", streetNo: 23, city: "Stockholm" },
+    { street: "SchraeschazschStrasse", streetNo: 2, city: "Amsterdam" },
+  ]
+
+  // act
+  const numberOfPeople = addToStart<IPerson>(listOfPeople, {
+    name: "David",
+    birthYear: 1975,
+  })
+  const numberOfAddresses = addToStart<Address>(listOfAddresses, {
+    street: "Champs Elysee",
+    streetNo: 1,
+    city: "Paris",
+  })
+
+  // assert
+  assert.strictEqual(numberOfPeople[0].name, "David")
+  assert.strictEqual(numberOfAddresses[0].city, "Paris")
+})

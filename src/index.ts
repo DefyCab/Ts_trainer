@@ -26,7 +26,8 @@ function countOdd(array: number[]): number {
 //   return array.filter((number) => number % 3 === 0).length
 // }
 
-const divisibleByThree = (array: number[]) => array.filter((number) => number % 3 === 0).length
+const divisibleByThree = (array: number[]) =>
+  array.filter((number) => number % 3 === 0).length
 
 function isOld(age: number): boolean {
   return age >= 35
@@ -109,6 +110,13 @@ function printThis(p: Person) {
 
 type Union = String | Number
 
+function addToStart<ElementType>(
+  list: ElementType[],
+  itemToAdd: ElementType
+): ElementType[] {
+  return [itemToAdd, ...list]
+}
+
 export {
   greet,
   isOld,
@@ -116,11 +124,13 @@ export {
   divisibleByThree,
   sumEven,
   Person,
+  Address,
   getPersonStreetNo,
   PersonC,
   EmployeeC,
   IPerson,
   getPersonNameString,
   printThis,
-  Union
+  Union,
+  addToStart,
 }
