@@ -117,6 +117,21 @@ function addToStart<ElementType>(
   return [itemToAdd, ...list]
 }
 
+class Wrapper<T> {
+  private list: T[]
+
+  constructor(list: T[]) {
+    this.list = list
+  }
+
+  public getFirst(): T {
+    return this.list[0]
+  }
+  public getLast(): T {
+    return this.list[this.list.length - 1]
+  }
+}
+
 export {
   greet,
   isOld,
@@ -133,4 +148,5 @@ export {
   printThis,
   Union,
   addToStart,
+  Wrapper,
 }

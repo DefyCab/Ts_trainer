@@ -16,6 +16,7 @@ import {
   printThis,
   Union,
   addToStart,
+  Wrapper,
 } from "./index"
 
 describe("ts test", () => {
@@ -183,4 +184,35 @@ it("add to list", () => {
   // assert
   assert.strictEqual(numberOfPeople[0].name, "David")
   assert.strictEqual(numberOfAddresses[0].city, "Paris")
+})
+
+it("wrapper for addresses", () => {
+  // arrange
+  const listOfAddresses: Address[] = [
+    { street: "Strålgatan", streetNo: 23, city: "Stockholm" },
+    { street: "SchraeschazschStrasse", streetNo: 2, city: "Amsterdam" },
+    { street: "Champs Elysee", streetNo: 1, city: "Paris" },
+  ]
+
+  // act
+  const list = new Wrapper<Address>(listOfAddresses)
+
+  // assert
+  assert.strictEqual(list.getFirst().city, "Stockholm")
+  assert.strictEqual(list.getLast().city, "Paris")
+})
+
+it("wrapper for persons", () => {
+  const listOfPersons: IPerson[] = [
+    { name: "Love", birthYear: 1979 },
+    { name: "Harry", birthYear: 1999 },
+    { name: "Elise", birthYear: 1967 },
+    { name: "Hariette", birthYear: 2003 },
+    { name: "Sven", birthYear: 1980 },
+  ]
+
+  const list = new Wrapper<IPerson>(listOfPersons)
+
+  assert.strictEqual(list.getFirst().name, "Love")
+  assert.strictEqual(list.getLast().birthYear, 1980)
 })
